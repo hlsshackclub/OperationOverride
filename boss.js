@@ -671,48 +671,10 @@ function setupBoss(endGame) {
     let table = undefined
     function handleKeydown(e) {
         if (["w", "a", "s", "d"].includes(e.key)) {
-            if (e.repeat) {
-                return
-            }
-            function moveInDir() {
-                moveAndUpdate(keyToDir[e.key])
-            }
-            moveInDir()
-            const firstMoveDelay = 150
-            const moveDelayVertical = 75
-            const moveDelayHorizontal = moveDelayVertical * aspectRatio
-            if (e.key == 'w') {
-                clearInterval(sInterval)
-                wInterval = setTimeout(() => wInterval = setInterval(moveInDir, moveDelayVertical), firstMoveDelay)
-            } else if (e.key == 'a') {
-                clearInterval(dInterval)
-                aInterval = setTimeout(() => aInterval = setInterval(moveInDir, moveDelayHorizontal), firstMoveDelay)
-            } else if (e.key == 's') {
-                clearInterval(wInterval)
-                sInterval = setTimeout(() => sInterval = setInterval(moveInDir, moveDelayVertical), firstMoveDelay)
-            } else {
-                clearInterval(aInterval)
-                dInterval = setTimeout(() => dInterval = setInterval(moveInDir, moveDelayHorizontal), firstMoveDelay)
-            }
+            moveAndUpdate(keyToDir[e.key])
         } else if (e.key === 'e') {
             tryDisableComputer()
             updateVisuals(getRooms(playerPos))
-        }
-    }
-
-    let wInterval = undefined
-    let aInterval = undefined
-    let sInterval = undefined
-    let dInterval = undefined
-    function handleKeyup(e) {
-        if (e.key == 'w') {
-            clearInterval(wInterval)
-        } else if (e.key == 'a') {
-            clearInterval(aInterval)
-        } else if (e.key == 's') {
-            clearInterval(sInterval)
-        } else {
-            clearInterval(dInterval)
         }
     }
 
@@ -720,23 +682,9 @@ function setupBoss(endGame) {
         table.focus();
     }
 
-    function clearAllIntervals() {
-        clearInterval(wInterval)
-        clearInterval(aInterval)
-        clearInterval(sInterval)
-        clearInterval(dInterval)
-    }
-
-    function handleBlur() {
-        clearAllIntervals()
-    }
-
     function removeEventListeners() {
-        clearAllIntervals()
         table.removeEventListener("keydown", handleKeydown)
-        table.removeEventListener("keyup", handleKeyup)
         table.removeEventListener("click", handleClick)
-        table.removeEventListener("blur", handleBlur)
     }
 
     table = document.createElement("table");
@@ -757,9 +705,7 @@ function setupBoss(endGame) {
     table.appendChild(tbody);
     table.setAttribute('tabindex', '0');
     table.addEventListener('keydown', handleKeydown);
-    table.addEventListener('keyup', handleKeyup)
     table.addEventListener('click', handleClick);
-    table.addEventListener('blur', handleBlur)
     document.getElementById("maze").appendChild(table);
 
     updateVisuals(getRooms(playerPos))

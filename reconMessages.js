@@ -182,6 +182,7 @@ function orderMessages(robotMessages_, doubleAgentMessages_, humanMessages_) {
     return ordered
 }
 
+const messages = orderMessages(robotMessages, doubleAgentMessages, humanMessages)
+const messagesCiphered = orderMessages(robotMessagesCiphered, doubleAgentMessagesCiphered, humanMessagesCiphered)
 const messagesFlat = orderMessages(robotMessagesFlat, doubleAgentMessagesFlat, humanMessagesFlat)
-
 const messagesCipheredFlat = orderMessages(robotMessagesCipheredFlat, doubleAgentMessagesCipheredFlat, humanMessagesCipheredFlat)

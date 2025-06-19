@@ -59,6 +59,25 @@ const checkDoubleAgentSelection = function(){
     }
 }()
 
+function showMessage(num) { //num is 1-indexed
+    document.getElementById("reconMessageTitle").innerText = `## Message #${num} ##`.slice(0, 16)
+    document.getElementById("reconMessageText").innerText = messagesCiphered[num-1]
+}
+
+const prevOrNext = function(){
+    let currentMessage = 1
+    return function(delta) {
+        currentMessage += delta
+        if(currentMessage > 10) {
+            currentMessage -= 10
+        } else if(currentMessage < 1) {
+            currentMessage += 10
+        }
+        showMessage(currentMessage)
+    }
+}()
+
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("reconMediumSelectButtons").innerHTML = document.getElementById("reconEasySelectButtons").innerHTML
+    showMessage(1)
 });

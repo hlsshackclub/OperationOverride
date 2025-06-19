@@ -37,32 +37,37 @@
         <p>
             Welcome to Operation Override. A hostile AI has seized control of Heart Lake Secondary School's critical
             systems.<br>
-            The situation is dire. Our networks are compromised, computer resources are being repurposed, and sensitive data is at risk.<br>
+            The situation is dire. Our networks are compromised, computer resources are being repurposed, and sensitive
+            data is at risk.<br>
             We need your help to shut it down!
         </p>
-        <button id="introButton1" onclick="show('introDiv1'); hide('introButton1')">Next</button>
-        <div id="introDiv1" class="hidden">
+        <button id="introButton1" onclick="show('introDiv2'); hide('introButton1')">Next</button>
+        <!-- <div id="introDiv1" class="hidden">
             <br>
             <p>
                 Work together with your team to fix our compromised systems and fight back the AI.<br>
                 The first team to complete all the challenges and shut down the AI wins!
             </p>
             <button id="introButton2" onclick="show('introDiv2'); hide('introButton2')">Next</button>
-        </div>
+        </div> -->
         <div id="introDiv2" class="hidden">
             <br>
             <p>
+                This operation has four stations which prepare you for your final confrontation with the AI.<br>
                 Each station offers multiple approaches. You can choose quick solutions or take on more complex challenges.<br>
                 The AI is not to be underestimated; going in unprepared will certainly lead to failure.<br>
-                Try to complete harder challenges at each station, as they will make the final confrontation much easier.<br> 
-                Good luck, and remember: the future of Heart Lake depends on your success!
+                Try to complete harder challenges at each station, as they will make the final confrontation much easier.<br>
+                Good luck, and remember: the future of Heart Lake depends on your success!<br>
             </p>
             <button id="introButton3" onclick="show('introDiv3'); hide('introButton3')">Next</button>
         </div>
         <div id="introDiv3" class="hidden">
             <br>
-            <button class="importantButton" onclick="goToFirstStation(); saveCurrentState();">Start</button>
-            <p style="color: var(--button-highlight-color-default-important)">You cannot go back upon clicking an orange button.</p>
+            <p style="color: var(--button-highlight-color-default-important)">You cannot go back upon clicking an orange
+                button.</p>
+            <button class="importantButton" onclick="goToFirstStation(); saveCurrentState();">Start</button><br><br>
+            <p>Note: your progress is saved after every completed station. You can replay the game by clicking "Play
+                Again" on the ending screen.</p>
         </div>
     </div>
     </div>
@@ -83,14 +88,10 @@
         <br>
         <p>
             The AI's central core is exposed.<br>
-            Prepare for the final confrontation (go to the cafeteria).
+            Prepare for the final confrontation.
         </p>
-        <label>Input Bossfight entry code:</label>
-        <input id="inputB1" class="codeinput inputbox" type="text" placeholder="code" maxlength=5>
-        <label id="wrongB1" class="hidden error">Wrong code.</label>
         <br>
-        <button class="importantButton"
-            onclick="validateAndCall('inputB1', bossfightCode, () => {hide('bossfightCodeCheck'); show('bossfight')}, 'wrongB1')">
+        <button class="importantButton" onclick="hide('bossfightCodeCheck'); show('bossfight');">
             Go to Bossfight</button>
     </div>
     <div id="bossfight" class="hidden">
@@ -99,15 +100,17 @@
         <div id="bossfightPrep">
             <br>
             <p>
-                Mission Objective: Navigate the AI's maze and destroy all computer cores to shut down the hostile AI. 
+                Mission Objective: Navigate the AI's maze and destroy all computer cores to shut down the hostile AI.
                 Computers are located in large rooms near the outskirts of the maze.
             </p>
             <br>
             <p>
-                Controls: Use WASD to move, E to destroy computers when adjacent.<br>
-                Avoid robots (<span style="text-align: center; display: inline-block; min-width: 3ch;">🤖</span>), they damage you when you first enter a room with them.<br>
+                Controls: Use WASD to move, and E to destroy computers when next to them.<br>
+                Avoid robots (<span style="text-align: center; display: inline-block; min-width: 3ch;">🤖</span>), they
+                damage you when you first enter a room with them.<br>
                 Moving through the maze will cost you time.<br>
-                Find computers (<span style="text-align: center; display: inline-block; min-width: 3ch;">🖥️</span>) surrounded by servers (<span style="text-align: center; display: inline-block; width: 3ch;">🗄️</span>).
+                Find computers (<span style="text-align: center; display: inline-block; min-width: 3ch;">🖥️</span>)
+                surrounded by servers (<span style="text-align: center; display: inline-block; width: 3ch;">🗄️</span>).
             </p>
             <br>
             <p id="bossfightEffects"></p>
@@ -146,8 +149,8 @@
             <span id="mazeTimebar"></span>
         </div>
         <br>
-        <button id='seeEndingButton' class="hidden importantButton"
-            onclick="goToEnding(); saveCurrentState();">See your ending</button>
+        <button id='seeEndingButton' class="hidden importantButton" onclick="goToEnding(); saveCurrentState();">See your
+            ending</button>
     </div>
     <div id="bossfightComplete" class="hidden">
         <br>
@@ -164,20 +167,17 @@
     <div id="networkingCodeCheck" class="hidden">
         <br>
         <p>
-            Your next objective is the Networking hub (go to the computer lab in room 121).<br>
+            Your next objective is the Networking hub.<br>
             Proceed to interface with the system.
         </p>
-        <label>Input Networking entry code:</label>
-        <input id="inputN1" class="codeinput inputbox" type="text" placeholder="code" maxlength=5>
-        <label id="wrongN1" class="hidden error">Wrong code.</label>
         <br>
-        <button class="importantButton"
-            onclick="validateAndCall('inputN1', networkingCode, () => {hide('networkingCodeCheck'); show('networkingContainer')}, 'wrongN1')">
+        <button class="importantButton" onclick="hide('networkingCodeCheck'); show('networkingContainer');">
             Go to Networking</button>
     </div>
     <div id="networkingContainer" class="hidden">
         <br>
         <h2>Networking</h2>
+        <br>
         <p>
             The AI has corrupted our network infrastructure and spread malware throughout our systems.<br>
             PDSB technicians report that we can restore functionality by reconnecting critical network nodes,<br>
@@ -209,10 +209,11 @@
             </div>
             <p>#################</p>
             <div id="netWalkWin" class="hidden">
-                <p class="win">Network connection re-established!<br>The system is stabilizing.</p>
+                <p class="win">Network connection re-established!</p>
                 <br>
                 <p>The network is stabilizing.<br>You can now proceed to the next station to continue your mission.</p>
-                <button class="importantButton" onclick="goToStationFromNetworking(); saveCurrentState();">Move On</button>
+                <button class="importantButton" onclick="goToStationFromNetworking(); saveCurrentState();">Move
+                    On</button>
             </div>
             <p></p>
         </div>
@@ -239,11 +240,11 @@
             <p>#############################################################################</p>
             <p id="manualTSPLength"></p> <span id="manualTSPStatus"></span>
             <div id="manualTSPWin" class="hidden">
-                <br>
-                <p class="win">Manual disinfection route optimized!<br>Key systems are back online.</p>
+                <p class="win">Manual disinfection route optimized!</p>
                 <br>
                 <p>Key systems are back online.<br>You can now advance to the next station.</p>
-                <button class="importantButton" onclick="goToStationFromNetworking(); saveCurrentState();">Move On</button>
+                <button class="importantButton" onclick="goToStationFromNetworking(); saveCurrentState();">Move
+                    On</button>
             </div>
         </div>
         <div id="networkingHardContainer" class="hidden">
@@ -251,8 +252,10 @@
             <div id="networkingHardWin" class="hidden">
                 <br>
                 <p class="win">Automated disinfection successful!<br>The AI's malware has been purged from this
-                    network.<br>Proceed to the next station to continue dismantling the AI's control.</p>
-                <button class="importantButton" onclick="goToStationFromNetworking(); saveCurrentState();">Move On</button>
+                    network.</p><br>
+                <p>Proceed to the next station to continue dismantling the AI's control.</p>
+                <button class="importantButton" onclick="goToStationFromNetworking(); saveCurrentState();">Move
+                    On</button>
             </div>
         </div>
     </div>
@@ -263,20 +266,17 @@
     <div id="manufacturingCodeCheck" class="hidden">
         <br>
         <p>
-            Your next target is the Manufacturing plant (go to room 121).<br>
+            Your next target is the Manufacturing plant.<br>
             Prepare to disrupt AI production lines.
         </p>
-        <label>Input Manufacturing entry code:</label>
-        <input id="inputM1" class="codeinput inputbox" type="text" placeholder="code" maxlength=5>
-        <label id="wrongM1" class="hidden error">Wrong code.</label>
         <br>
-        <button class="importantButton"
-            onclick="validateAndCall('inputM1', manufacturingCode, () => {hide('manufacturingCodeCheck'); show('manufacturingContainer')}, 'wrongM1')">
+        <button class="importantButton" onclick="hide('manufacturingCodeCheck'); show('manufacturingContainer');">
             Go to Manufacturing</button>
     </div>
     <div id="manufacturingContainer" class="hidden">
         <br>
         <h2>Manufacturing</h2>
+        <br>
         <p>The AI has initialized a manufacturing plant to build a robotic army!
             You can either reroute conveyor belts into disposal units to disrupt production (Easy-Medium),
             or use EMP pulses to permanently disable its machines (Hard).
@@ -298,10 +298,11 @@
                 minimizing<br>
                 collateral damage to the facility.
             </p>
-            <button class="hidden importantButton" onclick="goToStationFromManufacturing(); saveCurrentState();" id="flowFreeBailMedium"
-                class="hidden">
-                Head to the next station (if you are stuck on Medium)
-            </button>
+            <div class="hidden" id="flowFreeBailMedium">
+                <button class="hidden" onclick="goToStationFromManufacturing(); saveCurrentState();">
+                    Head to the next station (if you are stuck on Medium)
+                </button>
+            </div>
             <div id="flowFree1Container">
                 <div id="flowFree1">
                     <br>
@@ -333,6 +334,7 @@
                 </div>
                 <div id="flowFreeWin3" class="hidden">
                     <p class="win">Section 3 rerouted! A significant blow to the AI's production capabilities!</p>
+                    <br>
                     <p> You've successfully disrupted half the plant.<br>
                         You can now proceed to the next station, <br>
                         or choose to reroute more conveyors for a greater impact (Medium).</p>
@@ -364,7 +366,8 @@
                     <p>Manufacturing section 5:</p>
                 </div>
                 <div id="flowFreeWin5" class="hidden">
-                    <p class="win">Manufacturing Section 5 rerouted!<br>Robotic army assembly is critically impaired.</p>
+                    <p class="win">Manufacturing Section 5 rerouted!<br>Robotic army assembly is critically impaired.
+                    </p>
                     <button onclick="hide('flowFree5Container'); show('flowFree6Container')">
                         Go to section 6
                     </button>
@@ -377,6 +380,7 @@
                 </div>
                 <div id="flowFreeWin6" class="hidden">
                     <p class="win">All manufacturing sections rerouted!<br>The AI's production lines are in chaos.</p>
+                    <br>
                     <p>The plant is severely crippled. You can move on to the next station,<br>
                         or attempt a permanent shutdown using an EMP (Hard).</p>
                     <button class="importantButton" onclick="goToStationFromManufacturing(); saveCurrentState();">
@@ -391,7 +395,8 @@
                 <br>
                 <p class="win">EMP activated! The AI's manufacturing plant is permanently offline.<br>Excellent work.
                     Proceed to the next station.</p>
-                <button class="importantButton" onclick="goToStationFromManufacturing(); saveCurrentState();">Move On</button>
+                <button class="importantButton" onclick="goToStationFromManufacturing(); saveCurrentState();">Move
+                    On</button>
             </div>
         </div>
     </div>
@@ -402,15 +407,11 @@
     <div id="reconCodeCheck" class="hidden">
         <br>
         <p>
-            The Reconnaissance station requires your attention (go to room 415).<br>
+            The Reconnaissance station requires your attention.<br>
             Intercept and analyze AI communications.
         </p>
-        <label>Input Recon entry code:</label>
-        <input id="inputR1" class="codeinput inputbox" type="text" placeholder="code" maxlength=5>
-        <label id="wrongR1" class="hidden error">Wrong code.</label>
         <br>
-        <button class="importantButton"
-            onclick="validateAndCall('inputR1', reconCode, () => {hide('reconCodeCheck'); show('reconContainer')}, 'wrongR1')">
+        <button class="importantButton" onclick="hide('reconCodeCheck'); show('reconContainer');">
             Go to Recon</button>
     </div>
     <div id="reconContainer" class="hidden">
@@ -424,45 +425,77 @@
             Your task is to identify which messages originate from the hostile AI.
         </p>
         <br>
-        <div id="reconEasySelectButtons">
-            <button onclick="toggleButton(this)">&nbsp1&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp2&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp3&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp4&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp5&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp6&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp7&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp8&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp9&nbsp</button>
-            <button onclick="toggleButton(this)">&nbsp10&nbsp</button>
-        </div>
-        <br>
-        <button onclick="checkRobotSelection()">Check</button>
-        <label id="reconRobotIdentifyWin" class="hidden win">Enemy AI messages identified!</label>
-        <label id="reconRobotIdentifyError" class="hidden error">You incorrectly identified some messages. Try
-            again...</label>
-        <div id="reconRobotNextStep" class="hidden">
-            <br>
-            <p>
-                Good work identifying the AI's direct messages.<br>
-                Now, be aware that some messages are from "double agents", AI trying to mimic human operatives.<br>
-                These are harder to spot, but their language patterns might seem off.<br>
-                You can try to identify these impostor messages (Medium), or proceed to the next station.
+        <div class="flex-table-holder-holder">
+            <p>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#
             </p>
-            <div id="reconEasyFinishedChoices">
+            <p>#<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>#
+            </p>
+            <p>#<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>#
+            </p>
+            <div>
+                <p id="reconMessageTitle">placeholder</p>
                 <br>
-                <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move On</button>
-                <button onclick="hide('reconEasyFinishedChoices'); show('reconMedium')">Identify the Double Agent
-                    Messages</button>
+                <pre id="reconMessageText"></pre>
+                <br>
+                <p>################</p>
+            </div>
+            <p>#<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>#
+            </p>
+            <p>#<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>#
+            </p>
+            <p>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#
+            </p>
+        </div>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button onclick="prevOrNext(-1)">Prev</button>&nbsp&nbsp<button
+            onclick="prevOrNext(1)">Next</button>
+        <br>
+        <div id="reconEasy">
+            <br>
+            <p>Select the AI's messages.</p>
+            <div id="reconEasySelectButtons">
+                <button onclick="toggleButton(this)">&nbsp1&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp2&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp3&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp4&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp5&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp6&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp7&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp8&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp9&nbsp</button>
+                <button onclick="toggleButton(this)">&nbsp10&nbsp</button>
+            </div>
+            <br>
+            <button onclick="checkRobotSelection()">Check</button>
+            <label id="reconRobotIdentifyWin" class="hidden win">Enemy AI messages identified!</label>
+            <label id="reconRobotIdentifyError" class="hidden error">You incorrectly identified some messages.
+                Try
+                again...</label>
+            <div id="reconRobotNextStep" class="hidden">
+                <br>
+                <p>
+                    Good work identifying the AI's direct messages.<br>
+                    Now, be aware that some messages are from "double agents": AI trying to mimic human
+                    operatives.<br>
+                    These are harder to spot, but supposedly their language patterns differ from genuine
+                    writing.<br>
+                    You can try to identify these impostor messages (Medium), or proceed to the next station.
+                </p>
+                <div id="reconEasyFinishedChoices">
+                    <br>
+                    <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move
+                        On</button>
+                    <button onclick="hide('reconEasy'); show('reconMedium')">Identify the Double Agent
+                        Messages (Medium)</button>
+                </div>
             </div>
         </div>
         <div id="reconMedium" class="hidden">
             <br>
-            <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move On</button>
+            <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move On (if
+                you are stuck on Medium)</button>
             <br>
             <br>
             <p>Select the messages sent by double agents.</p>
-            <br>
             <div id="reconMediumSelectButtons">
                 <!-- populated by js -->
             </div>
@@ -470,30 +503,34 @@
             <button onclick="checkDoubleAgentSelection()">Check</button>
             <label id="reconDoubleAgentIdentifyWin" class="hidden win">Double agent messages successfully
                 identified!</label>
-            <label id="reconDoubleAgentIdentifyError" class="hidden error">You incorrectly identified some messages. Try
+            <label id="reconDoubleAgentIdentifyError" class="hidden error">You incorrectly identified some
+                messages. Try
                 again...</label>
-        </div>
-        <div id="reconDoubleAgentNextStep" class="hidden">
-            <br>
-            <p>All suspicious messages identified.<br>You can now attempt to decrypt their contents (Hard) or proceed to
-                the next station.</p>
-            <div id="reconMediumFinishedChoices">
+            <div id="reconDoubleAgentNextStep" class="hidden">
                 <br>
-                <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move On</button>
-                <button
-                    onclick="hide('reconMediumFinishedChoices'); moveEditorToStation(2, 'reconEditorContainer'); show('reconHard');">Decode
-                    The Messages</button>
+                <p>All suspicious messages identified.<br>You can now attempt to decrypt their contents (Hard) or
+                    proceed to
+                    the next station.</p>
+                <div id="reconMediumFinishedChoices">
+                    <br>
+                    <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move
+                        On</button>
+                    <button
+                        onclick="hide('reconMedium'); moveEditorToStation(2, 'reconEditorContainer'); show('reconHard');">Decode
+                        The Messages</button>
+                </div>
             </div>
         </div>
         <div id="reconHard" class="hidden">
             <br>
-            <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move On</button>
+            <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move On (if
+                you are stuck on Hard)</button>
             <br>
             <div id="reconEditorContainer"></div>
             <div id="reconHardWin" class="hidden">
                 <br>
-                <p class="win">All messages decrypted! This information could be useful.<br>Proceed to the next station with
-                    this new information.</p>
+                <p class="win">All messages decrypted! This information could be useful.<br>Proceed to the next station
+                    with all recon gathered.</p>
                 <button class="importantButton" onclick="goToStationFromRecon(); saveCurrentState();">Move On</button>
             </div>
         </div>
@@ -506,26 +543,23 @@
     <div id="securityCodeCheck" class="hidden">
         <br>
         <p>
-            Proceed to the Security mainframe (go to room 210).<br>
+            Proceed to the Security mainframe.<br>
             Your mission is to bypass AI defenses.
         </p>
-        <label>Input Security entry code:</label>
-        <input id="inputS1" class="codeinput inputbox" type="text" placeholder="code" maxlength=5>
-        <label id="wrongS1" class="hidden error">Wrong code.</label>
         <br>
-        <button class="importantButton"
-            onclick="validateAndCall('inputS1', securityCode, () => {hide('securityCodeCheck'); show('securityContainer')}, 'wrongS1')">
+        <button class="importantButton" onclick="hide('securityCodeCheck'); show('securityContainer');">
             Go to Security</button>
     </div>
     <div id="securityContainer" class="hidden">
         <br>
         <h2>Security</h2>
         <div id="terminalContainer">
+            <br>
             <p>
                 You've successfully breached the AI's secure file system.<br>
-                Your first goal is to find its password (in `password.txt`).<br>
+                Your first goal is to find its password (in "password.txt").<br>
                 With more effort, you might be able to cause more significant damage.<br>
-                Use the terminal to explore and complete your objectives.
+                Use the terminal to explore the AI's directories and files to complete your objectives.
             </p>
             <br>
             <pre id="terminal"></pre>
@@ -535,26 +569,33 @@
             </form>
         </div>
         <div id="terminalWinEasy" class="hidden">
-            <p class="win">AI Master Password acquired! You have a feeling this will be important later.</p>
-            <p>You can now proceed to the next station or attempt further system sabotage by deleting importantData.txt (Medium).</p>
-            <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Next Station</button>
+            <p class="win">AI Master Password acquired! You have a feeling this will be important later.</p><br>
+            <p>You can now proceed to the next station or attempt further system sabotage by deleting importantData.txt
+                (Medium).</p>
+            <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Next
+                Station</button>
         </div>
         <div id="terminalWinMedium" class="hidden">
-            <p class="win">Critical AI data successfully deleted! A significant blow to the AI's data.</p>
-            <p>You can advance to the next station or escalate your efforts by deploying a data-wiping virus to delete some of the AI's files stored elsewhere (Hard).</p>
-            <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Next Station</button>
+            <p class="win">Critical AI data successfully deleted! A significant blow to the AI's capabilities.</p><br>
+            <p>You can advance to the next station or escalate your efforts by deploying a data-wiping virus to delete
+                more of the AI's files (Hard).</p>
+            <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Next
+                Station</button>
             <button
                 onclick="moveEditorToStation(3, 'securityEditorContainer'); hide('terminalContainer'); hide('terminalWinMedium'); show('securityHard')">Create
                 a Virus (Hard)</button>
         </div>
         <div id="securityHard" class="hidden">
             <br>
-            <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Move On (if stuck on Hard)</button>
+            <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Move On (if stuck
+                on Hard)</button>
             <br>
             <div id="securityEditorContainer"></div>
             <div id="terminalWinHard" class="hidden">
+                <br>
                 <p class="win">Virus deployed! Critical AI data has been wiped!</p>
-                <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Next Station</button>
+                <button class="importantButton" onclick="goToStationFromSecurity(); saveCurrentState();">Next
+                    Station</button>
             </div>
         </div>
     </div>

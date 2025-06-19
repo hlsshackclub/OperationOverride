@@ -24,10 +24,10 @@ function makeEnding() {
             <p>The AI has been defeated. Heart Lake Secondary School is secure.</p>
             <br>
             <p>Mission Statistics:</p>
-            <p>AI Computers Destroyed: <strong>${computersDestroyed}/${maxComputersRemaining}</strong></p>
-            <p>Health Remaining: <strong>${health}/10</strong></p>
-            <p>Time Remaining: <strong>${(timePercent).toFixed(1)}%</strong></p>
-            <p>Hard Challenges Completed: <strong>${hardStations}</strong></p>
+            <p>AI Computers Destroyed: <span class="win">${computersDestroyed}/${maxComputersRemaining}</span></p>
+            <p>Health Remaining: <span class="win">${health}/10</span></p>
+            <p>Time Remaining: <span class="win">${(timePercent).toFixed(1)}%</span></p>
+            <p>Hard Challenges Completed: <span class="win">${hardStations}</span></p>
         `
 
     messageElement.innerHTML = victoryMessage
@@ -55,10 +55,10 @@ function makeEnding() {
             <p>Cause of failure: ${defeatCause}</p>
             <br>
             <p>Final Statistics:</p>
-            <p>AI Computers Destroyed: <strong>${computersDestroyed}/${maxComputersRemaining}</strong></p>
-            <p>Final Health: <strong>${health}/10</strong></p>
-            <p>Time Remaining: <strong>${(timePercent).toFixed(1)}%</strong></p>
-            <p>Hard Challenges Completed: <strong>${hardStations}</strong></p>
+            <p>AI Computers Destroyed: <span class="error">${computersDestroyed}/${maxComputersRemaining}</span></p>
+            <p>Final Health: <span class="error">${health}/10</span></p>
+            <p>Time Remaining: <span class="error">${(timePercent).toFixed(1)}%</span></p>
+            <p>Hard Challenges Completed: <span class="error">${hardStations}</span></p>
         `
 
     messageElement.innerHTML = defeatMessage

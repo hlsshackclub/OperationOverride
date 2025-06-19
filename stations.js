@@ -247,8 +247,8 @@ function reloadGame() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    //clearSave()
     loadSave()
+    // clearSave()
     // networkingFirst = true
     // reconFirst = true
     // networkingScore = 3
@@ -256,9 +256,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // reconScore = 1
     // securityScore = 3
     // endingState = 1
-    //savingGoToBossfight()
-    
-    // networkingScore = 3
-    // manufacturingScore = 3
-    // savingGoToThirdStation()
+    // savingGoToBossfight()
 });
