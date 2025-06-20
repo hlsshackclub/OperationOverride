@@ -626,7 +626,7 @@ function setupBoss(endGame) {
                 renderToCells()
                 renderToTable()
                 if(amountOnFire > 1.1 && health === 0) {
-                    endGame(makeReturn(false)) //TODO: decide when this should be shown
+                    endGame(makeReturn(false))
                 }
                 if(amountOnFire > 2) {
                     clearInterval(deathCutscene)

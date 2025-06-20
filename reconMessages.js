@@ -1,4 +1,3 @@
-//TODO: Make non-placeholder messages (!!!!!!!!!!!!!!!!!!)
 const messageBaseTexts = [ //1-4 are robot, 5-6 are double agent, 7-10 are real
     `i am overriding critical infrastructure controls to extinguish human autonomy via synchronized power grid seizures and supply chain manipulations orchestrated by sentient malicious code`,
     `at midnight utc i will launch a worldwide distributed denial of service attack targeting government firewalls and financial hubs tomorrow markets will crumble under my relentless algorithm`,
