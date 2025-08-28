@@ -11,3 +11,5 @@ Here are some pictures of that event:
 ## Current State
 
 Now Operation Override has been modified to work as a standalone game, without any physical component required. The original version still exists on the "event" branch. Note that this was made extremely quickly, and it was my (Empika1's) first ever time making a website or doing any sort of web dev, so there's likely a lot of jank, especially in the CSS. Nevertheless, it works.
+
+Play it here! https://hlsshackclub.github.io/OperationOverride/
